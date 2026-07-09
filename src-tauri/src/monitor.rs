@@ -24,9 +24,7 @@ fn read_settings() -> Result<serde_json::Value, String> {
     match std::fs::read_to_string(&path) {
         Ok(text) => serde_json::from_str(&text)
             .map_err(|e| format!("Could not parse {}: {e}", path.display())),
-        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
-            Ok(serde_json::json!({}))
-        }
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(serde_json::json!({})),
         Err(e) => Err(format!("Could not read {}: {e}", path.display())),
     }
 }
@@ -118,7 +116,11 @@ pub fn install_shim() -> Result<InstallResult, String> {
     });
     write_settings(&settings)?;
 
-    Ok(InstallResult { status, wrapped, backup })
+    Ok(InstallResult {
+        status,
+        wrapped,
+        backup,
+    })
 }
 
 #[tauri::command]
@@ -140,7 +142,10 @@ pub fn restore_shim() -> Result<InstallResult, String> {
     let original: Option<String> = std::fs::read_to_string(monitor_dir().join("shim-config.json"))
         .ok()
         .and_then(|t| serde_json::from_str::<serde_json::Value>(&t).ok())
-        .and_then(|v| v.get("originalCommand").and_then(|c| c.as_str().map(String::from)));
+        .and_then(|v| {
+            v.get("originalCommand")
+                .and_then(|c| c.as_str().map(String::from))
+        });
 
     let backup = backup_settings();
     match &original {
