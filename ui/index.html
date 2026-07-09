@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="widget" id="widget">
+
+    <header class="header" data-tauri-drag-region>
+      <span class="mascot" id="mascot" aria-hidden="true"></span>
+      <span class="wordmark" data-tauri-drag-region>Halo</span>
+      <span class="header-spacer" data-tauri-drag-region></span>
+      <button class="icon-btn" id="pinBtn" title="Always on top" aria-label="Toggle always on top" aria-pressed="false">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 3h6l1 7 2.5 2.5H5.5L8 10z"/></svg>
+      </button>
+      <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Open settings">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.5-2.3 1a7 7 0 0 0-2-1.2L14.2 3h-4.4l-.4 2.6a7 7 0 0 0-2 1.2l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 0 2.4l-2 1.5 2 3.5 2.3-1a7 7 0 0 0 2 1.2l.4 2.6h4.4l.4-2.6a7 7 0 0 0 2-1.2l2.3 1 2-3.5-2-1.5c.06-.4.1-.8.1-1.2z"/></svg>
+      </button>
+      <button class="icon-btn" id="hideBtn" title="Hide to tray" aria-label="Hide to tray">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>
+      </button>
+    </header>
+
+    <div class="body" id="body">
+      <!-- rendered by app.js -->
+    </div>
+
+    <footer class="footer">
+      <span class="feed" id="feed"><span class="feed-dot"></span><span id="feedText">Starting…</span></span>
+      <button class="update-pill" id="updatePill" hidden></button>
+      <span class="version" id="version"></span>
+    </footer>
+
+    <!-- Settings slide-over -->
+    <div class="panel" id="panel" hidden>
+      <div class="panel-head" data-tauri-drag-region>
+        <button class="icon-btn" id="backBtn" aria-label="Close settings">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="panel-title">Settings</span>
+      </div>
+      <div class="panel-body">
+        <div class="setting">
+          <span class="setting-label">Theme</span>
+          <div class="segmented" id="themeSeg" role="radiogroup" aria-label="Theme">
+            <button data-theme-opt="system" role="radio">Auto</button>
+            <button data-theme-opt="light" role="radio">Light</button>
+            <button data-theme-opt="dark" role="radio">Dark</button>
+          </div>
+        </div>
+        <label class="setting row">
+          <span class="setting-label">Always on top</span>
+          <input type="checkbox" id="pinToggle" class="switch">
+        </label>
+        <label class="setting row">
+          <span class="setting-label">Launch at login</span>
+          <input type="checkbox" id="autostartToggle" class="switch">
+        </label>
+        <label class="setting row">
+          <span class="setting-label">Check for updates daily</span>
+          <input type="checkbox" id="updateToggle" class="switch">
+        </label>
+        <div class="setting row">
+          <span class="setting-label">Data feed</span>
+          <button class="text-btn" id="disconnectBtn">Disconnect</button>
+        </div>
+        <div class="panel-foot">
+          <button class="text-btn" id="githubBtn">GitHub</button>
+          <button class="text-btn" id="checkNowBtn">Check for updates</button>
+        </div>
+        <p class="privacy">Local-first: Halo reads Claude Code's own files and never
+        sends data anywhere. The only network call is the optional update check
+        against api.github.com.</p>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

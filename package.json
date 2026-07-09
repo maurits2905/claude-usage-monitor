@@ -1,0 +1,15 @@
+{
+  "name": "halo",
+  "version": "0.2.0",
+  "description": "Halo - a compact desktop widget for Claude usage limits. Official rate-limit data, zero credentials, no runtime dependencies.",
+  "private": true,
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  },
+  "license": "MIT"
+}
