@@ -1,6 +1,6 @@
 [package]
 name = "halo"
-version = "0.2.0"
+version = "0.2.1"
 description = "Compact desktop widget for Claude usage limits"
 authors = ["Maurits Puggaard"]
 license = "MIT"
