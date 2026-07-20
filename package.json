@@ -1,6 +1,6 @@
 {
   "name": "halo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Halo - a compact desktop widget for Claude usage limits. Official rate-limit data, zero credentials, no runtime dependencies.",
   "private": true,
   "scripts": {
