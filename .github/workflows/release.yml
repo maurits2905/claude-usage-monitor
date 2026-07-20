@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -43,7 +44,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }}
-          releaseName: "Halo ${{ github.ref_name }}"
+          tagName: v__VERSION__
+          releaseName: "Halo v__VERSION__"
           releaseDraft: true
           args: ${{ matrix.args }}
