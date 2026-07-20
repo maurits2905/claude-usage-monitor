@@ -119,6 +119,10 @@ fn main() {
                 .build(app)?;
 
             if let Some(window) = app.get_webview_window("main") {
+                if let Some(icon) = app.default_window_icon() {
+                    window.set_icon(icon.clone())?;
+                }
+            
                 if start_hidden {
                     let _ = window.hide();
                 } else {
